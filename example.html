@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Reviews example</title>
+<div id="out">Loading…</div>
+<script>
+fetch("reviews.json")
+  .then(r => r.json())
+  .then(d => {
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+    document.getElementById("out").innerHTML =
+      `<h2>${d.overallRating} / 5 (${d.totalReviews} reviews)</h2>` +
+      d.reviews.map(r => `<p><b>${esc(r.author)}</b> ${"★".repeat(r.rating)}<br>${esc(r.text)}</p>`).join("");
+  })
+  .catch(() => document.getElementById("out").textContent = "Could not load reviews.");
+</script>
