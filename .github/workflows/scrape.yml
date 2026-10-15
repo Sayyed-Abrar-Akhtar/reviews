@@ -34,7 +34,7 @@ jobs:
       - name: Scrape
         run: node scrape.mjs
         env:
-          TARGET_URL: https://london-clothing.com/
+          TARGET_URL: https://sayyed-abrar-akhtar.github.io/google-review-widget-test/
           DESTINATIONS: ${{ secrets.DESTINATIONS }}
 
       - uses: actions/configure-pages@v5
